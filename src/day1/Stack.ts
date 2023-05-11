@@ -1,6 +1,6 @@
 type Node<T> = {
     value: T,
-    next?: Node<T>,
+    prev?: Node<T>,
 }
 
 export default class Stack<T> {
@@ -14,7 +14,7 @@ export default class Stack<T> {
 
     push(item: T): void {
         const node = {value: item} as Node<T>;
-        node.next = this.head;
+        node.prev = this.head;
         this.head = node;
         this.length++;
     }
@@ -25,7 +25,7 @@ export default class Stack<T> {
         }
 
         const node = this.head;
-        this.head = node.next;
+        this.head = node.prev;
         this.length--;
         return node.value;
     }
